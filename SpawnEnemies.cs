@@ -69,7 +69,8 @@ public class SpawnEnemies : MonoBehaviour
     //Spawn method
     void SpawnEnemy()
     {
-        Vector3 pickedSpawnPos
+        Vector3 pickedSpawnPos = spawnPos[Random.Range(0, spawnPos.Length)].position;
+        Instantiate(cars[Random.Range(0, cars.Length)], pickedSpawnPos, quaternion.Euler(0, 0, 0));
     }
    
 
