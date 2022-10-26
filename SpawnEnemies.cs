@@ -10,8 +10,10 @@ using Random = UnityEngine.Random;
 
 public class SpawnEnemies : MonoBehaviour
 {
+    //Some singleton things
     private static SpawnEnemies _instance;
     
+    //General enemy speed
     public float EnemySpeed;
 
     //Time between spawn variables
@@ -27,6 +29,7 @@ public class SpawnEnemies : MonoBehaviour
     private Transform[] spawnPos;
     
 
+    //Some singleton things
     public static SpawnEnemies Instance
     {
         get
@@ -48,12 +51,13 @@ public class SpawnEnemies : MonoBehaviour
 
     void Update()
     {
+        //Reset function, just to make it easy
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        //Timer
+        //Timer to spawn
         if (TimeBtwSpawn <= 0)
         {
             float chances = Random.Range(1, 101);
@@ -69,7 +73,9 @@ public class SpawnEnemies : MonoBehaviour
     //Spawn method
     void SpawnEnemy()
     {
+        //Getting random position in spawnPos[] array
         Vector3 pickedSpawnPos = spawnPos[Random.Range(0, spawnPos.Length)].position;
+        //Instantiating
         Instantiate(cars[Random.Range(0, cars.Length)], pickedSpawnPos, quaternion.Euler(0, 0, 0));
     }
    
